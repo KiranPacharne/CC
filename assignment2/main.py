@@ -9,9 +9,9 @@ class MainPage(webapp2.RequestHandler):
         path =os.path.join(os.path.dirname(__file__),'templates/index.html')
 	self.response.out.write(template.render(path,template_values))
     def post(self):
-        region = self.request.get('region')
+        location = self.request.get('location')
         area = self.request.get('area')
-        url ="http://worldtimeapi.org/api/timezone/"+ region +"/" + area
+        url ="http://worldtimeapi.org/api/timezone/"+ location +"/" + area
         data = urllib.urlopen(url).read()
         data = json.loads(data)
         date = data['datetime'][0:10]
